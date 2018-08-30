@@ -18,10 +18,14 @@ $router->get('/', function () use ($router) {
 
 $router->post('/get-status', function (Illuminate\Http\Request $request) {
     if ( $request->token != env('KT_token') ) {
-        return ['reply_code' => 0, 'reply_text' => 'not allow'];
+        return ['reply_code' => 9, 'reply_text' => 'not allow'];
     }
 
     $status = App\CurrentStatus::getStatus($request->hn);
+
+    if (!$status) {
+        return ['reply_code' => 1, 'reply_text' => 'ไม่พบข้อมูล'];
+    }
 
     $patient = (new App\APIs\PatientDataProvider)->getPatient($request->hn);
 
