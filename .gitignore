@@ -1,0 +1,6 @@
+/vendor
+/.idea
+/app/APIs
+Homestead.json
+Homestead.yaml
+.env
