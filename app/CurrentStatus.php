@@ -9,7 +9,7 @@ class CurrentStatus extends Model
     protected $dates = ['DateFU', 'NextFU', 'RecordDate'];
     public static function getStatus($hn)
     {
-        return static::where('HN', $hn)->first();
+        return static::where('HN', $hn)->orderBy('RecordDate', 'DESC')->first();
     }
 
     public function getStatusThai()
