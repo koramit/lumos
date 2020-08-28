@@ -16,6 +16,13 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('/call-from-website', function () use ($router) {
+    return [
+        'greeting' => 'Hello',
+        'person' => 'Sansanee'
+    ];
+});
+
 $router->post('/get-status', function (Illuminate\Http\Request $request) {
     if ( $request->token != env('KT_token') ) {
         return ['reply_code' => 9, 'reply_text' => 'not allow'];
